@@ -1,0 +1,4 @@
+CalibrationBand,AvgNextMonth12hWaitCount,ObservedBadOutcomeRate,TrustMonths,Window,MonotonicCheck
+Low,92.67307692307692,0.0057692307692307696,520,Overall,Overall monotonic=True
+Medium,299.7288461538462,0.05,520,Overall,Overall monotonic=True
+High,777.8724202626641,0.5572232645403377,533,Overall,Overall monotonic=True

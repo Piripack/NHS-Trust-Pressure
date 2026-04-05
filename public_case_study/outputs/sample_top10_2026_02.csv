@@ -1,0 +1,11 @@
+Month,Org Code,Org name,RiskScore,RiskBand,DominantDriver,ActionType,BestLever,BestLeverScoreReduction
+2026-02,RRK,UNIVERSITY HOSPITALS BIRMINGHAM NHS FOUNDATION TRUST,2.750360,High,Demand,Surge planning / intake management,-5% admissions,0.047888
+2026-02,RAL,ROYAL FREE LONDON NHS FOUNDATION TRUST,1.978889,High,Demand,Surge planning / intake management,-5% admissions,0.033176
+2026-02,REM,LIVERPOOL UNIVERSITY HOSPITALS NHS FOUNDATION TRUST,1.667949,High,Flow,Discharge acceleration / discharge coordination,+5% discharges,0.036648
+2026-02,RYR,UNIVERSITY HOSPITALS SUSSEX NHS FOUNDATION TRUST,1.659843,High,Flow,Discharge acceleration / discharge coordination,-5% admissions,0.042217
+2026-02,RAJ,MID AND SOUTH ESSEX NHS FOUNDATION TRUST,1.524165,High,Demand,Surge planning / intake management,-5% admissions,0.042550
+2026-02,RM3,NORTHERN CARE ALLIANCE NHS FOUNDATION TRUST,1.446297,Medium,Demand,Surge planning / intake management,-5% admissions,0.040291
+2026-02,RXW,THE SHREWSBURY AND TELFORD HOSPITAL NHS TRUST,1.302324,Medium,Flow,Discharge acceleration / discharge coordination,+5% available beds,0.026888
+2026-02,RWD,UNITED LINCOLNSHIRE TEACHING HOSPITALS NHS TRUST,1.211818,Medium,Demand,Surge planning / intake management,-5% admissions,0.026678
+2026-02,RX1,NOTTINGHAM UNIVERSITY HOSPITALS NHS TRUST,1.196765,Medium,Flow,Discharge acceleration / discharge coordination,+5% discharges,0.028422
+2026-02,R1H,BARTS HEALTH NHS TRUST,1.135386,Medium,Flow,Discharge acceleration / discharge coordination,+5% available beds,0.025131

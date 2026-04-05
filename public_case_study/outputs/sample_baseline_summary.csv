@@ -1,0 +1,2 @@
+WindowsTested,MeanRiskScoreCapture,MeanBestBaselineCapture,MeanRelativeImprovementVsBestBaseline,WindowsBeatingBestBaseline,WinRate,Pass_BaselineRule,Pass_StabilityRule
+13,0.3077522519007335,0.25020602338647696,0.24504206297873674,12,0.9230769230769231,True,True

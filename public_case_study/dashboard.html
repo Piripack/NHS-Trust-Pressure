@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHS Trust Pressure Board Brief</title>
+  <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #5b6470;
+      --paper: #edf2f7;
+      --sheet: #fbfdff;
+      --line: #d7e0ea;
+      --line-strong: #94a3b8;
+      --accent: #0f6cbd;
+      --label: #526274;
+      --blue-soft: #e8f2ff;
+      --amber-soft: #fff4d8;
+      --rose-soft: #fde9ec;
+      --shadow: 0 18px 44px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #f4f8fb 0%, #e8eef5 100%);
+      color: var(--ink);
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 18px 36px;
+    }
+
+    .sheet {
+      background: var(--sheet);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--line);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      padding: 28px 24px 22px;
+      border-bottom: 2px solid var(--line-strong);
+      background:
+        linear-gradient(135deg, rgba(15, 108, 189, 0.08), transparent 35%),
+        linear-gradient(180deg, #fbfdff 0%, #f3f7fb 100%);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      max-width: 820px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 780px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.45;
+    }
+
+    .section {
+      padding: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 18px;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+
+    .label {
+      color: var(--label);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding-top: 6px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 6px;
+      font-size: 30px;
+      line-height: 1.03;
+      letter-spacing: -0.03em;
+    }
+
+    .section-head p {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .key-finding {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 22px;
+      align-items: start;
+      padding-top: 8px;
+    }
+
+    .key-number {
+      font-size: 118px;
+      line-height: 0.84;
+      letter-spacing: -0.09em;
+    }
+
+    .key-copy {
+      max-width: 620px;
+      font-size: 24px;
+      line-height: 1.28;
+    }
+
+    .key-copy strong {
+      color: var(--accent);
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .bars {
+      display: grid;
+      gap: 14px;
+      padding-top: 6px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 180px 1fr 56px;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .bar-label {
+      font-size: 15px;
+    }
+
+    .track {
+      height: 18px;
+      background: #eee4d8;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      border-radius: 999px;
+    }
+
+    .tool {
+      background: linear-gradient(90deg, var(--accent), #38bdf8);
+    }
+
+    .simple {
+      background: linear-gradient(90deg, #94a3b8, #64748b);
+    }
+
+    .bar-value {
+      text-align: right;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .note-box {
+      padding: 18px;
+      border: 1px solid var(--line);
+      background: #f6f9fc;
+      font-size: 19px;
+      line-height: 1.4;
+    }
+
+    .note-box strong {
+      color: var(--accent);
+    }
+
+    .bands {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .band {
+      border: 1px solid var(--line);
+      padding: 16px;
+    }
+
+    .band.low { background: var(--blue-soft); }
+    .band.medium { background: var(--amber-soft); }
+    .band.high { background: var(--rose-soft); }
+
+    .band h3 {
+      margin: 0 0 8px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .band-value {
+      font-size: 38px;
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      margin-bottom: 8px;
+    }
+
+    .band p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .output {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 10px 8px;
+      border-bottom: 1px solid #e8dece;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .gloss {
+      border: 1px solid var(--line);
+      background: #f6f9fc;
+      padding: 18px;
+    }
+
+    .gloss h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .gloss p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .use-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .use {
+      border: 1px solid var(--line);
+      background: #f6f9fc;
+      padding: 16px;
+    }
+
+    .use h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+    }
+
+    .use p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .footer {
+      padding: 18px 24px 22px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 920px) {
+      .section-head,
+      .key-finding,
+      .compare,
+      .bands,
+      .output,
+      .use-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .key-number {
+        font-size: 82px;
+      }
+
+      .bar-row {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="sheet">
+      <div class="topbar">
+        <div>NHS Trust Pressure Board Brief</div>
+        <div>Public Case Study</div>
+      </div>
+
+      <section class="hero">
+        <h1>A trust-level tool for spotting where severe pressure may build next month.</h1>
+        <p>Using public NHS operational data, this case study shows how trusts can be ranked by next-month risk, how that risk can be explained as demand, flow, or capacity, and how a simple action line can be attached to each flag.</p>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div class="label">Key Finding</div>
+          <div>
+            <h2>The shortlist captured a large share of the later problem.</h2>
+            <p>Across 13 month-to-next-month tests, the tool flagged the 10% of trusts judged highest risk.</p>
+          </div>
+        </div>
+        <div class="key-finding">
+          <div class="key-number">31%</div>
+          <div class="key-copy">Those flagged trusts later contained about <strong>31% of the very long waits</strong> seen in the following month.</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div class="label">Comparison</div>
+          <div>
+            <h2>The full tool did better than the simpler method.</h2>
+            <p>The simpler method ranked trusts using only their recent history of very long waits.</p>
+          </div>
+        </div>
+        <div class="compare">
+          <div class="bars">
+            <div class="bar-row">
+              <div class="bar-label">Full tool</div>
+              <div class="track"><div class="fill tool" style="width: 31%;"></div></div>
+              <div class="bar-value">31%</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Simple method</div>
+              <div class="track"><div class="fill simple" style="width: 25%;"></div></div>
+              <div class="bar-value">25%</div>
+            </div>
+          </div>
+          <div class="note-box">
+            The tool beat the simpler method in <strong>12 of the 13 tests</strong>, so the result held up across time rather than appearing in only one period.
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div class="label">Risk Bands</div>
+          <div>
+            <h2>The risk labels matched what happened next.</h2>
+            <p>Trusts placed in higher-risk groups later had many more very long waits in the next month.</p>
+          </div>
+        </div>
+        <div class="bands">
+          <div class="band low">
+            <h3>Low Risk</h3>
+            <div class="band-value">About 93</div>
+            <p>Average number of very long waits in the next month.</p>
+          </div>
+          <div class="band medium">
+            <h3>Medium Risk</h3>
+            <div class="band-value">About 300</div>
+            <p>Average number of very long waits in the next month.</p>
+          </div>
+          <div class="band high">
+            <h3>High Risk</h3>
+            <div class="band-value">About 778</div>
+            <p>Average number of very long waits in the next month.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div class="label">Example Output</div>
+          <div>
+            <h2>Each flagged trust gets a reason and an action line.</h2>
+            <p>This is what the public sample looks like for a few trusts in the latest month.</p>
+          </div>
+        </div>
+        <div class="output">
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Trust</th>
+                  <th>Risk</th>
+                  <th>Main Driver</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Manchester University NHS Foundation Trust</td>
+                  <td>High</td>
+                  <td>Flow</td>
+                  <td>Prioritise discharge acceleration</td>
+                </tr>
+                <tr>
+                  <td>University Hospitals Birmingham NHS Foundation Trust</td>
+                  <td>High</td>
+                  <td>Demand</td>
+                  <td>Prepare for demand surge</td>
+                </tr>
+                <tr>
+                  <td>Mid and South Essex NHS Foundation Trust</td>
+                  <td>High</td>
+                  <td>Flow</td>
+                  <td>Prioritise discharge acceleration</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="gloss">
+            <h3>What the driver labels mean</h3>
+            <p><strong>Demand</strong> means the front door looks busiest.</p>
+            <p><strong>Flow</strong> means patients appear to be moving through the hospital too slowly.</p>
+            <p><strong>Capacity</strong> means bed or space pressure looks most important.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div class="label">Operational Use</div>
+          <div>
+            <h2>What the tool is designed to support.</h2>
+            <p>It is intended to help focus attention and structure discussions, not replace local judgement.</p>
+          </div>
+        </div>
+        <div class="use-strip">
+          <div class="use">
+            <h3>Spot</h3>
+            <p>Which trusts may face the worst severe pressure next month.</p>
+          </div>
+          <div class="use">
+            <h3>Explain</h3>
+            <p>Whether that risk looks more like demand, flow, or capacity.</p>
+          </div>
+          <div class="use">
+            <h3>Support</h3>
+            <p>Which simple operational lever looks most promising under a basic scenario check.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer">
+        Public summary only. The full private implementation is not published in this folder.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
